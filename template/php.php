@@ -3,7 +3,7 @@
 /**
  * filename.php
  *
- * Copyright (c) 2013, Fwolf <fwolf.aide+fwolfbin@gmail.com>
+ * Copyright (c) 2013, Fwolf <fwolf.aide+bin.public@gmail.com>
  * All rights reserved.
  *
  * Distributed under the GNU General Public License, version 3.0.
@@ -17,9 +17,9 @@
  *
  * Other information like requirement, usage etc.
  *
- * @package		fwolfbin
+ * @package		bin.public
  * @copyright	Copyright © 2013, Fwolf
- * @author		Fwolf <fwolf.aide+fwolfbin@gmail.com>
+ * @author		Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license		http://www.gnu.org/licenses/gpl.html GPL v3
  * @license		http://www.gnu.org/licenses/lgpl.html LGPL v3
  * @license		http://opensource.org/licenses/mit-license MIT

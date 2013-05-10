@@ -2,7 +2,7 @@
 #====================================================================
 #	git_id.sh
 #
-#	Copyright (c) 2009, Fwolf <fwolf.aide+fwolfbin@gmail.com>
+#	Copyright (c) 2009, Fwolf <fwolf.aide+bin.public@gmail.com>
 #	All rights reserved.
 #	Distributed under the GNU Lesser General Public License, version 3.0.
 #

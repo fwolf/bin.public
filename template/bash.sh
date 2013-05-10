@@ -2,7 +2,7 @@
 #====================================================================
 #	filename.sh
 #
-#	Copyright (c) 2013, Fwolf <fwolf.aide+fwolfbin@gmail.com>
+#	Copyright (c) 2013, Fwolf <fwolf.aide+bin.public@gmail.com>
 #	All rights reserved.
 #
 #	Distributed under the GNU General Public License, version 3.0.

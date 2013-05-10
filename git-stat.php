@@ -3,7 +3,7 @@
 /**
  * git-stat.php
  *
- * Copyright (c) 2011-2013, Fwolf <fwolf.aide+fwolfbin@gmail.com>
+ * Copyright (c) 2011-2013, Fwolf <fwolf.aide+bin.public@gmail.com>
  * All rights reserved.
  * Distributed under the GNU Lesser General Public License, version 3.0.
  *
