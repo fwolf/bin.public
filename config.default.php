@@ -46,6 +46,27 @@ SetCfgDefault('git-stat.tidy.std', 28);
 // cnt-git.php settings ========
 
 
+// ======== imap-del-for-mh.php
+// Max files for one-run
+SetCfgDefault('imap-del-for-mh.batchsize', 100);
+// Original mh file dir
+SetCfgDefault('imap-del-for-mh.dir.mh', '');
+// Dir to store mh file after treatment
+SetCfgDefault('imap-del-for-mh.dir.done', '');
+// Ignore these file, array or string split by ' ' or ','
+SetCfgDefault('imap-del-for-mh.file.ignore', '');
+// Mail account to do del operation, one or multi array
+/*
+SetCfgDefault('imap-del-for-mh.mail', array(
+	'account name'	=> array(
+		'mailbox'	=> 'mailbox name',
+		'trash'		=> 'trash name',
+	),
+));
+*/
+// imap-del-for-mh.php ========
+
+
 // ======== Mail settings
 // Mail host
 SetCfgDefault('mail.server.gmail.imap.host', 'imap.gmail.com');
