@@ -2,46 +2,66 @@
 /**
  * Default configure file
  *
- * Copy this file as a new file named 'config.php',
- *	set your configure in the new file,
- *	and DO NOT modify this file directly.
+ * Usage:
+ * 	Create a new file named 'config.php',
+ * 	do your setting in it using SetCfg(),
+ * 	the syntax is silimar with SetCfgDefault() below,
+ *	they will be auto included by this file.
+ *	DO NOT MODIFY THIS FILE DIRECTLY.
  *
  * @package		bin.public
- * @copyright	Copyright 2008-2013, Fwolf
+ * @copyright	Copyright © 2008-2013, Fwolf
  * @author		Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license		http://www.gnu.org/licenses/lgpl.html LGPL v3
  * @since		2008-02-17
  */
 
-if (!defined('FWOLFLIB')) define('FWOLFLIB', 'fwolflib/');
-require_once(FWOLFLIB . 'func/config.php');
-require_once(FWOLFLIB . 'func/env.php');
-// Global config data array
-if (!defined('DEFAULT_CONFIG_DONE')) {
+
+// Define location of Fwolflib
+if (!defined('FWOLFLIB'))
+	define('FWOLFLIB', 'fwolflib/');
+require_once FWOLFLIB . 'func/config.php';
+//require_once FWOLFLIB . 'func/env.php';
+
+// Init global config data array and include user config file
+if ('config.default.php' == basename(__FILE__)) {
 	$config = array();
+
+	if (file_exists(__DIR__ . '/config.php'))
+		require __DIR__ . '/config.php';
 }
+
 
 // ======== git-stat.php settings
 // How many info will this disp ? (1-2)
-SetCfg('git-stat.depth', 2);
+SetCfgDefault('git-stat.depth', 2);
 // Total width of output
-SetCfg('git-stat.width', 80);
+SetCfgDefault('git-stat.width', 80);
 // Empty line between authors if depth > 1
-SetCfg('git-stat.spacer', true);
+SetCfgDefault('git-stat.spacer', true);
 // Consider avg line width when count
-SetCfg('git-stat.tidy.on', true);
+SetCfgDefault('git-stat.tidy.on', true);
 // Standard line width
-SetCfg('git-stat.tidy.std', 28);
+SetCfgDefault('git-stat.tidy.std', 28);
 // cnt-git.php settings ========
 
 
-// ========= In the config.php, you can delete below contents =========
-if (!defined('DEFAULT_CONFIG_DONE')) {
+// ======== Mail settings
+// Mail host
+SetCfgDefault('mail.server.gmail.imap.host', 'imap.gmail.com');
+SetCfgDefault('mail.server.gmail.imap.port', 993);
+SetCfgDefault('mail.server.gmail.pop3.host', 'pop.gmail.com');
+SetCfgDefault('mail.server.gmail.pop3.port', 995);
+SetCfgDefault('mail.server.gmail.smtp.host', 'ssl://smtp.gmail.com');
+SetCfgDefault('mail.server.gmail.smtp.port', 465);
+// Mail account
+/*
+SetCfgDefault('mail.account.user@domain_tld.server', 'gmail');
+SetCfgDefault('mail.account.user@domain_tld.name', 'user@domain.tld');
+SetCfgDefault('mail.account.user@domain_tld.user', 'user or user@domain.tld');
+SetCfgDefault('mail.account.user@domain_tld.pass', 'pass');
+*/
+// Mail settings ========
 
-	define('DEFAULT_CONFIG_DONE', true);
 
-	// If config.php exists, include it.
-	if (defined('P2R') && file_exists(P2R . 'config.php'))
-		require(P2R . 'config.php');
-}
 ?>
