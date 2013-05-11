@@ -148,10 +148,11 @@ function ImapDel ($s_file) {
 	$ar_done = array();
 	foreach ($ar_uid as $account => $i_uid) {
 		Ecl("\t" . 'Account: ' . $account . ', UID: ' . $i_uid);
-		$b = imap_mail_move($ar_mbox[$account], $i_uid
+		$b1 = imap_mail_move($ar_mbox[$account], $i_uid
 			, GetCfg('imap-del-for-mh.mail.' . $account . '.trash')
 			, CP_UID);
-		if ($b) {
+		$b2 = imap_delete($ar_mbox[$account], $i_uid, FT_UID);
+		if ($b1 && $b2) {
 			$ar_done[] = $account;
 			imap_expunge($ar_mbox[$account]);
 		}
