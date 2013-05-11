@@ -193,6 +193,7 @@ function ImapSearch ($s_file) {
 	$s = file_get_contents($s_file);
 	// Grap From, Date, Message-ID
 	$s_date = '';
+	$s_received = '';
 	$s_from = '';
 	$s_messageid = '';
 	$s_subject = '';
@@ -208,6 +209,17 @@ function ImapSearch ($s_file) {
 	else {
 		Ecl('Date: empty.');
 		return;
+	}
+
+	$i = preg_match('/\nReceived:.*;\s+(.+?)\n/im', $s, $ar);
+	if (1 === $i) {
+		$s_received_original = trim($ar[1]);
+		$s_received = date('d-M-Y', strtotime($ar[1]));
+		$s_received_since = date('d-M-Y', strtotime($s_received . ' -1 day'));
+		$s_received_before = date('d-M-Y', strtotime($s_received . ' +1 day'));
+	}
+	else {
+		Ecl('Received: empty.');
 	}
 
 	// From: need decode
@@ -271,9 +283,16 @@ function ImapSearch ($s_file) {
 	$s_search .= ' SINCE "' . $s_date_since . '"'
 		. ' BEFORE "' . $s_date_before . '"'
 	;
+	// Use received time as 2nd search condition, use only time
+	$s_search2 = ' SINCE "' . $s_received_since . '"'
+		. ' BEFORE "' . $s_received_before . '"'
+	;
 
 	foreach ($ar_mbox as $account => $o_mbox) {
 		$ar = imap_search($o_mbox, $s_search, SE_UID);
+		if (empty($ar)) {
+			$ar = imap_search($o_mbox, $s_search2, SE_UID);
+		}
 		if (empty($ar))
 			continue;
 
