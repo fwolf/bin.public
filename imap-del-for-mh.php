@@ -142,8 +142,12 @@ function ImapDel ($s_file) {
 	$s_file = GetCfg('imap-del-for-mh.dir.mh') . $s_file;
 	ImapSearch($s_file);
 
-	if (empty($ar_uid))
+	if (empty($ar_uid)) {
+		// Nothing found, move to error
+		rename($s_file, GetCfg('imap-del-for-mh.dir.error')
+			. basename($s_file));
 		return 0;
+	}
 
 	$ar_done = array();
 	foreach ($ar_uid as $account => $i_uid) {
@@ -168,7 +172,6 @@ function ImapDel ($s_file) {
 		return 1;
 	}
 	else
-		// Nothing deleted
 		return 0;
 } // end of func ImapDel
 

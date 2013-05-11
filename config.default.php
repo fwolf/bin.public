@@ -53,6 +53,8 @@ SetCfgDefault('imap-del-for-mh.batchsize', 100);
 SetCfgDefault('imap-del-for-mh.dir.mh', '');
 // Dir to store mh file after treatment
 SetCfgDefault('imap-del-for-mh.dir.done', '');
+// Dir to store mh file not found on server
+SetCfgDefault('imap-del-for-mh.dir.error', '');
 // Ignore these file, array or string split by ' ' or ','
 SetCfgDefault('imap-del-for-mh.file.ignore', '');
 // Mail account to do del operation, one or multi array
