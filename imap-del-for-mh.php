@@ -192,6 +192,7 @@ function ImapSearch ($s_file) {
 	$s_date = '';
 	$s_from = '';
 	$s_messageid = '';
+	$s_subject = '';
 	$ar = array();
 	$i = preg_match('/\nDate:(.+?)\n/', $s, $ar);
 	if (1 === $i) {
@@ -200,7 +201,7 @@ function ImapSearch ($s_file) {
 		$s_date_since = date('d-M-Y', strtotime($s_date . ' -1 day'));
 		$s_date_before = date('d-M-Y', strtotime($s_date . ' +1 day'));
 	}
-	$i = preg_match('/\nFrom:(.+?)\n/', $s, $ar);
+	$i = preg_match('/\nFrom:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
 		$s_form = $ar[1];
 	}
@@ -208,15 +209,18 @@ function ImapSearch ($s_file) {
 		Ecl('Date: empty.');
 		return;
 	}
-	$i = preg_match('/\nFrom:(.+?)\n/', $s, $ar);
+	// From: need decode
+	$i = preg_match('/\nFrom:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
-		$s_from = trim($ar[1]);
+		$ar = imap_mime_header_decode(trim($ar[1]));
+		foreach ((array)$ar as $elm)
+			$s_from .= $elm->text;
 	}
 	else {
 		Ecl('From: empty.');
 		return;
 	}
-	$i = preg_match('/\nMessage-ID:(.+?)\n/', $s, $ar);
+	$i = preg_match('/\nMessage-ID:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
 		$s_messageid = trim($ar[1]);
 	}
@@ -224,15 +228,30 @@ function ImapSearch ($s_file) {
 		Ecl('Message-ID: empty.');
 		return;
 	}
-
-	$s_search = ' FROM "' . $s_from . '"'
-		. ' SINCE "' . $s_date_since . '"'
-		. ' BEFORE "' . $s_date_before . '"'
-	;
+	$i = preg_match('/\nSubject:(.+?)\n/i', $s, $ar);
+	if (1 === $i) {
+		$ar = imap_mime_header_decode(trim($ar[1]));
+		foreach ((array)$ar as $elm)
+			$s_subject .= $elm->text;
+	}
+	else {
+		Ecl('Subject: empty.');
+	}
 
 	Ecl('From: ' . $s_from);
 	Ecl('Date: ' . $s_date_original);
+	Ecl('Subject: ' . $s_subject);
 	Ecl('Message-ID: ' . $s_messageid);
+
+	// Do search
+	$s_search = '';
+	if (! false === strpos('@', $s_from))
+		$s_search .= ' FROM "' . addslashes($s_from) . '"';
+	if (!empty($s_subject))
+		$s_search .= ' SUBJECT "' . addslashes($s_subject) . '"';
+	$s_search .= ' SINCE "' . $s_date_since . '"'
+		. ' BEFORE "' . $s_date_before . '"'
+	;
 
 	foreach ($ar_mbox as $account => $o_mbox) {
 		$ar = imap_search($o_mbox, $s_search, SE_UID);
@@ -260,6 +279,9 @@ function ImapSearch ($s_file) {
 		if (-1 != $i_uid)
 			$ar_uid[$account] = $i_uid;
 	}
+
+	if (empty($ar_uid))
+		Ecl("\t" . 'Search not found !');
 
 	return;
 } // end of func ImapSearch
