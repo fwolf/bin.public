@@ -194,32 +194,38 @@ function ImapSearch ($s_file) {
 	$s_messageid = '';
 	$s_subject = '';
 	$ar = array();
-	$i = preg_match('/\nDate:(.+?)\n/', $s, $ar);
+
+	$i = preg_match('/\nDate:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
 		$s_date_original = trim($ar[1]);
 		$s_date = date('d-M-Y', strtotime($ar[1]));
 		$s_date_since = date('d-M-Y', strtotime($s_date . ' -1 day'));
 		$s_date_before = date('d-M-Y', strtotime($s_date . ' +1 day'));
 	}
-	$i = preg_match('/\nFrom:(.+?)\n/i', $s, $ar);
-	if (1 === $i) {
-		$s_form = $ar[1];
-	}
 	else {
 		Ecl('Date: empty.');
 		return;
 	}
+
 	// From: need decode
 	$i = preg_match('/\nFrom:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
 		$ar = imap_mime_header_decode(trim($ar[1]));
 		foreach ((array)$ar as $elm)
 			$s_from .= $elm->text;
+		$s_from_original = $s_from;
+		// Grap <mail@domain.tld> for search condition
+		$i = preg_match('/<(.+)>/', $s_from, $ar);
+		if (1 === $i)
+			$s_from = $ar[1];
+		else
+			$s_from = '';
 	}
 	else {
 		Ecl('From: empty.');
 		return;
 	}
+
 	$i = preg_match('/\nMessage-ID:(.+?)\n/i', $s, $ar);
 	if (1 === $i) {
 		$s_messageid = trim($ar[1]);
@@ -228,7 +234,9 @@ function ImapSearch ($s_file) {
 		Ecl('Message-ID: empty.');
 		return;
 	}
-	$i = preg_match('/\nSubject:(.+?)\n/i', $s, $ar);
+
+	// This regex support multi-line Subject:
+	$i = preg_match('/\nSubject:([^:]+?)\n\S+:/im', $s, $ar);
 	if (1 === $i) {
 		$ar = imap_mime_header_decode(trim($ar[1]));
 		foreach ((array)$ar as $elm)
@@ -238,17 +246,19 @@ function ImapSearch ($s_file) {
 		Ecl('Subject: empty.');
 	}
 
-	Ecl('From: ' . $s_from);
+	Ecl('From: ' . $s_from_original);
 	Ecl('Date: ' . $s_date_original);
 	Ecl('Subject: ' . $s_subject);
 	Ecl('Message-ID: ' . $s_messageid);
 
 	// Do search
 	$s_search = '';
-	if (! false === strpos('@', $s_from))
+	if (! (false === strpos($s_from, '@'))) {
 		$s_search .= ' FROM "' . addslashes($s_from) . '"';
-	if (!empty($s_subject))
+	}
+	if (!empty($s_subject) && (false === strpos($s_subject, '=?'))) {
 		$s_search .= ' SUBJECT "' . addslashes($s_subject) . '"';
+	}
 	$s_search .= ' SINCE "' . $s_date_since . '"'
 		. ' BEFORE "' . $s_date_before . '"'
 	;
@@ -281,7 +291,7 @@ function ImapSearch ($s_file) {
 	}
 
 	if (empty($ar_uid))
-		Ecl("\t" . 'Search not found !');
+		Ecl("\t" . 'Mail not found on all server !');
 
 	return;
 } // end of func ImapSearch
