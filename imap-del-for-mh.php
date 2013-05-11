@@ -256,8 +256,11 @@ function ImapSearch ($s_file) {
 	if (! (false === strpos($s_from, '@'))) {
 		$s_search .= ' FROM "' . addslashes($s_from) . '"';
 	}
-	if (!empty($s_subject) && (false === strpos($s_subject, '=?'))) {
-		$s_search .= ' SUBJECT "' . addslashes($s_subject) . '"';
+	else {
+		// If no From:, try Subject:
+		if (!empty($s_subject) && (false === strpos($s_subject, '=?'))) {
+			$s_search .= ' SUBJECT "' . addslashes($s_subject) . '"';
+		}
 	}
 	$s_search .= ' SINCE "' . $s_date_since . '"'
 		. ' BEFORE "' . $s_date_before . '"'
