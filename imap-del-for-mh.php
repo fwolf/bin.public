@@ -138,6 +138,7 @@ function ImapConnect () {
 function ImapDel ($s_file) {
 	global $ar_mbox, $ar_uid;
 
+	Ecl("\n[" . date('Y-m-d H:i:s') . ']');
 	$s_file = GetCfg('imap-del-for-mh.dir.mh') . $s_file;
 	ImapSearch($s_file);
 
@@ -180,8 +181,7 @@ function ImapDel ($s_file) {
 function ImapSearch ($s_file) {
 	global $ar_mbox, $ar_uid;
 
-	Ecl('');
-	echo 'File: ' . $s_file;
+	Ecl('File: ' . $s_file);
 
 	if (!is_readable($s_file))
 		return;
@@ -204,7 +204,7 @@ function ImapSearch ($s_file) {
 		$s_form = $ar[1];
 	}
 	else {
-		Ecl(', Date: empty.');
+		Ecl('Date: empty.');
 		return;
 	}
 	$i = preg_match('/\nFrom:(.+?)\n/', $s, $ar);
@@ -212,7 +212,7 @@ function ImapSearch ($s_file) {
 		$s_from = trim($ar[1]);
 	}
 	else {
-		Ecl(', From: empty.');
+		Ecl('From: empty.');
 		return;
 	}
 	$i = preg_match('/\nMessage-ID:(.+?)\n/', $s, $ar);
@@ -220,7 +220,7 @@ function ImapSearch ($s_file) {
 		$s_messageid = trim($ar[1]);
 	}
 	else {
-		Ecl(', From: empty.');
+		Ecl('Message-ID: empty.');
 		return;
 	}
 
@@ -229,7 +229,9 @@ function ImapSearch ($s_file) {
 		. ' BEFORE "' . $s_date_before . '"'
 	;
 
-	Ecl(', From: ' . $s_from . ', Date: ' . $s_date_original);
+	Ecl('From: ' . $s_from);
+	Ecl('Date: ' . $s_date_original);
+	Ecl('Message-ID: ' . $s_messageid);
 
 	foreach ($ar_mbox as $account => $o_mbox) {
 		$ar = imap_search($o_mbox, $s_search, SE_UID);
@@ -241,9 +243,19 @@ function ImapSearch ($s_file) {
 		if (empty($ar))
 			continue;
 		$i_uid = -1;
-		foreach ($ar as $mail)
-			if ($mail->message_id == $s_messageid)
-				$i_uid = $mail->uid;
+
+		// If only 1 search result, assign directly
+		if (1 == count($ar))
+			$i_uid = $ar[0]->uid;
+		else {
+			foreach ($ar as $mail)
+				if ($mail->message_id == $s_messageid) {
+					$i_uid = $mail->uid;
+					break;
+				}
+		}
+
+		// Write to result array
 		if (-1 != $i_uid)
 			$ar_uid[$account] = $i_uid;
 	}
