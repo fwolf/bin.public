@@ -144,8 +144,7 @@ function ImapDel ($s_file) {
 
 	if (empty($ar_uid)) {
 		// Nothing found, move to error
-		rename($s_file, GetCfg('imap-del-for-mh.dir.error')
-			. basename($s_file));
+		MailFileMove($s_file, GetCfg('imap-del-for-mh.dir.error'));
 		return 0;
 	}
 
@@ -166,8 +165,7 @@ function ImapDel ($s_file) {
 	if (!empty($ar_done)) {
 		Ecl("\t" . 'Deleted from: ' . implode(', ', $ar_done));
 		// Archive file
-		rename($s_file, GetCfg('imap-del-for-mh.dir.done')
-			. basename($s_file));
+		MailFileMove($s_file, GetCfg('imap-del-for-mh.dir.done'));
 
 		return 1;
 	}
@@ -327,10 +325,37 @@ function ImapSearch ($s_file) {
 } // end of func ImapSearch
 
 
+/**
+ * Move mail file to another dir (MH)
+ *
+ * @param	string	$s_srce
+ * @param	string	$s_dir
+ */
+function MailFileMove ($s_srce, $s_dir) {
+	// Check existing files in $s_dir, determine dest filename
+	$ar = scandir($s_dir);
+	// Manual sort because $ar include '.' '..' and other non-mail files
+	$i = 0;
+	foreach ((array)$ar as $f) {
+		if (is_numeric($f) && is_file($s_dir . $f) && $f > $i)
+			$i = intval($f);
+	}
+	if (0 == $i)
+		// No exists mail, use original filename
+		rename($s_srce, $s_dir . basename($s_srce));
+	else
+		// Use new filename
+		rename($s_srce, $s_dir . strval(++$i));
+} // end of func MailFileMove
+
+
 /*
  * ChangeLog
  *
- * V 0.01 / 2013-05-10 /
+ * V 0.02 / 2013-05-13 /
+ * 		- Move file with rename, will not replace existing file anymore.
+ *
+ * V 0.01 / 2013-05-10 / 434423e082
  * 		- New.
  */
 ?>
