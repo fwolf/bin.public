@@ -249,7 +249,7 @@ function ImapSearch ($s_file) {
 	}
 
 	// This regex support multi-line Subject:
-	$i = preg_match('/\nSubject:([^:]+?)\n\S+:/im', $s, $ar);
+	$i = preg_match('/\nSubject:([\s\S]*?)\n\w/im', $s, $ar);
 	if (1 === $i) {
 		$ar = imap_mime_header_decode(trim($ar[1]));
 		foreach ((array)$ar as $elm)
