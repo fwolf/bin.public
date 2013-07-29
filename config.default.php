@@ -1,90 +1,130 @@
 <?php
 /**
- * Default configure file
+ * Configure file
  *
  * Usage:
- * 	Create a new file named 'config.php',
- * 	do your setting in it using SetCfg(),
- * 	the syntax is silimar with SetCfgDefault() below,
- *	they will be auto included by this file.
- *	DO NOT MODIFY THIS FILE DIRECTLY.
+ *  1. Copy to a new file named 'config.php'
+ *  2. (Optional)Remove code outside of 'Config define area'
+ *  3. Change defines
+ *  4. (Optional)Remove defines no change needed
  *
- * @package		bin.public
- * @copyright	Copyright © 2008-2013, Fwolf
- * @author		Fwolf <fwolf.aide+bin.public@gmail.com>
- * @license		http://www.gnu.org/licenses/lgpl.html LGPL v3
- * @since		2008-02-17
+ * For defines which need compute to get final result:
+ *  1. Remove from 'config.php'] = use compute job in 'config.default.php'
+ *  2. Do compute in 'config.php'
+ *
+ * DO NOT MODIFY 'config.default.php' DIRECTLY.
+ *
+ * @package     bin.public
+ * @copyright   Copyright © 2008-2013, Fwolf
+ * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
+ * @license     http://www.gnu.org/licenses/lgpl.html LGPL v3
+ * @since       2008-02-17
  */
 
 
-// Define location of Fwolflib
-if (!defined('FWOLFLIB'))
-	define('FWOLFLIB', 'fwolflib/');
-require_once FWOLFLIB . 'func/config.php';
-//require_once FWOLFLIB . 'func/env.php';
-
-// Init global config data array and include user config file
+// Init global config array
 if ('config.default.php' == basename(__FILE__)) {
-	$config = array();
+    $config = array();
 
-	if (file_exists(__DIR__ . '/config.php'))
-		require __DIR__ . '/config.php';
+
+    // Load user config if exists
+    if (file_exists(__DIR__ . '/config.php')) {
+        require __DIR__ . '/config.php';
+    }
+    $configUser = $config;
+
+
+    // Load requirement lib autoload file
+    // Fwlib
+    if (!isset($config['lib.path.fwlib'])) {
+        $config['lib.path.fwlib'] = 'fwlib/';
+    }
+    require $config['lib.path.fwlib'] . 'autoload.php';
+
+
+    // For backward compitible
+    define('FWOLFLIB', $config['lib.path.fwlib']);
+    require FWOLFLIB . 'func/config.php';
 }
+
+
+/***********************************************************
+ * Config define area
+ *
+ * Use $configUser to compute value if needed.
+ *
+ * In config.php, code outside this area can be removed.
+ **********************************************************/
 
 
 // ======== git-stat.php settings
 // How many info will this disp ? (1-2)
-SetCfgDefault('git-stat.depth', 2);
+$config['git-stat.depth'] = 2;
 // Total width of output
-SetCfgDefault('git-stat.width', 80);
+$config['git-stat.width'] = 80;
 // Empty line between authors if depth > 1
-SetCfgDefault('git-stat.spacer', true);
+$config['git-stat.spacer'] = true;
 // Consider avg line width when count
-SetCfgDefault('git-stat.tidy.on', true);
+$config['git-stat.tidy.on'] = true;
 // Standard line width
-SetCfgDefault('git-stat.tidy.std', 28);
+$config['git-stat.tidy.std'] = 28;
 // cnt-git.php settings ========
 
 
 // ======== imap-del-for-mh.php
 // Max files for one-run
-SetCfgDefault('imap-del-for-mh.batchsize', 100);
+$config['imap-del-for-mh.batchsize'] = 100;
 // Original mh file dir
-SetCfgDefault('imap-del-for-mh.dir.mh', '');
+$config['imap-del-for-mh.dir.mh'] = '';
 // Dir to store mh file after treatment
-SetCfgDefault('imap-del-for-mh.dir.done', '');
+$config['imap-del-for-mh.dir.done'] = '';
 // Dir to store mh file not found on server
-SetCfgDefault('imap-del-for-mh.dir.error', '');
+$config['imap-del-for-mh.dir.error'] = '';
 // Ignore these file, array or string split by ' ' or ','
-SetCfgDefault('imap-del-for-mh.file.ignore', '');
+$config['imap-del-for-mh.file.ignore'] = '';
 // Mail account to do del operation, one or multi array
 /*
-SetCfgDefault('imap-del-for-mh.mail', array(
-	'account name'	=> array(
-		'mailbox'	=> 'mailbox name',
-		'trash'		=> 'trash name',
-	),
-));
+$config['imap-del-for-mh.mail'] = array(
+    'account name'  => array(
+        'mailbox'   => 'mailbox name',
+        'trash'     => 'trash name',
+    ),
+);
 */
 // imap-del-for-mh.php ========
 
 
 // ======== Mail settings
 // Mail host
-SetCfgDefault('mail.server.gmail.imap.host', 'imap.gmail.com');
-SetCfgDefault('mail.server.gmail.imap.port', 993);
-SetCfgDefault('mail.server.gmail.pop3.host', 'pop.gmail.com');
-SetCfgDefault('mail.server.gmail.pop3.port', 995);
-SetCfgDefault('mail.server.gmail.smtp.host', 'ssl://smtp.gmail.com');
-SetCfgDefault('mail.server.gmail.smtp.port', 465);
+$config['mail.server.gmail.imap.host'] = 'imap.gmail.com';
+$config['mail.server.gmail.imap.port'] = 993;
+$config['mail.server.gmail.pop3.host'] = 'pop.gmail.com';
+$config['mail.server.gmail.pop3.port'] = 995;
+$config['mail.server.gmail.smtp.host'] = 'ssl://smtp.gmail.com';
+$config['mail.server.gmail.smtp.port'] = 465;
 // Mail account
 /*
-SetCfgDefault('mail.account.user@domain_tld.server', 'gmail');
-SetCfgDefault('mail.account.user@domain_tld.name', 'user@domain.tld');
-SetCfgDefault('mail.account.user@domain_tld.user', 'user or user@domain.tld');
-SetCfgDefault('mail.account.user@domain_tld.pass', 'pass');
+$config['mail.account.user@domain_tld.server'] = 'gmail';
+$config['mail.account.user@domain_tld.name'] = 'user@domain.tld';
+$config['mail.account.user@domain_tld.user'] = 'user or user@domain.tld';
+$config['mail.account.user@domain_tld.pass'] = 'pass';
 */
 // Mail settings ========
 
 
-?>
+/***********************************************************
+ * Config define area end
+ **********************************************************/
+
+
+// Merge user and default config
+if ('config.default.php' == basename(__FILE__)) {
+    $config = array_merge($config, $configUser);
+
+    // Deal with $config with Config class or use as global
+
+    // For backward compatible
+    foreach ($config as $k => $v) {
+        SetCfg($k, $v);
+    }
+}
