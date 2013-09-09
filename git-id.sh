@@ -1,34 +1,34 @@
 #! /bin/bash
 #====================================================================
-#	git_id.sh
+#   git_id.sh
 #
-#	Copyright (c) 2009, Fwolf <fwolf.aide+bin.public@gmail.com>
-#	All rights reserved.
-#	Distributed under the GNU Lesser General Public License, version 3.0.
+#   Copyright (c) 2009, Fwolf <fwolf.aide+bin.public@gmail.com>
+#   All rights reserved.
+#   Distributed under the GNU Lesser General Public License, version 3.0.
 #
-#	Version 0.01, since 2009-08-10.
+#   Version 0.01, since 2009-08-10.
 #
-#	Generate a common git version number.
+#   Generate a common git version number.
 #
-#	Rule: repo_name-branch-sha1(head-8-digi)-revision
+#   Rule: repo_name-branch-sha1(head-8-digi)-revision
 #====================================================================
 
 
 # Print usage message
 function PrintUsage {
-	cat <<-EOF
-	Usage: `basename $0` [hash]
+    cat <<-EOF
+    Usage: `basename $0` [hash]
 
-	Parameters:
-	  hash          Sha1 hash of git, default HEAD.
-	EOF
+    Parameters:
+      hash          Sha1 hash of git, default HEAD.
+    EOF
 } # end of func PrintUsage
 
 
 HASH="HEAD"
 # Check parameter amount
 if [[ $# -lt 1 ]]; then
-	HASH="$1"
+    HASH="$1"
 fi
 
 
@@ -36,8 +36,8 @@ fi
 
 # Check if is in a git repository
 if [ ! -d '.git' ]; then
-	echo 'Must exec in a git repository.'
-	exit 1
+    echo 'Must exec in a git repository.'
+    exit 1
 fi
 
 # Get repository name

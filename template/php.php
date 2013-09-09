@@ -17,22 +17,22 @@
  *
  * Other information like requirement, usage etc.
  *
- * @package		bin.public
- * @copyright	Copyright © 2013, Fwolf
- * @author		Fwolf <fwolf.aide+bin.public@gmail.com>
- * @license		http://www.gnu.org/licenses/gpl.html GPL v3
- * @license		http://www.gnu.org/licenses/lgpl.html LGPL v3
- * @license		http://opensource.org/licenses/mit-license MIT
- * @since		2011-01-11
+ * @package     bin.public
+ * @copyright   Copyright © 2013, Fwolf
+ * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
+ * @license     http://www.gnu.org/licenses/gpl.html GPL v3
+ * @license     http://www.gnu.org/licenses/lgpl.html LGPL v3
+ * @license     http://opensource.org/licenses/mit-license MIT
+ * @since       2011-01-11
  */
 
 // Include
 if (0 <= version_compare(phpversion(), '5.3.0')) {
-	if (!defined('P2R')) define('P2R', __DIR__ . '/');
-	require_once(__DIR__ . '/config.default.php');
+    if (!defined('P2R')) define('P2R', __DIR__ . '/');
+    require_once(__DIR__ . '/config.default.php');
 } else {
-	if (!defined('P2R')) define('P2R', dirname(__FILE__) . '/');
-	require_once(dirname(__FILE__) . '/config.default.php');
+    if (!defined('P2R')) define('P2R', dirname(__FILE__) . '/');
+    require_once(dirname(__FILE__) . '/config.default.php');
 }
 
 
@@ -40,8 +40,8 @@ if (0 <= version_compare(phpversion(), '5.3.0')) {
 
 // Check parameter amount, at least 1 param needed
 if (2 > $argc) {
-	PrintUsage();
-	exit(-1);
+    PrintUsage();
+    exit(-1);
 }
 
 
@@ -56,8 +56,8 @@ if (2 > $argc) {
  * Print usage message
  */
 function PrintUsage() {
-	$s = basename(__FILE__);
-	echo <<<EOF
+    $s = basename(__FILE__);
+    echo <<<EOF
 Usage: $s P1 [P2] [P3] [P4]
 
 Parameters:
@@ -72,15 +72,15 @@ EOF;
  * ChangeLog
  *
  * V 0.04 / 2012-03-01 / 90598d3f73
- * 		- Chg: Use __DIR__ instead of P2R constant.
+ *      - Chg: Use __DIR__ instead of P2R constant.
  *
  * V 0.03 / 2011-08-21 / 38fdf8d44b
- * 		- Add P2R and auto include config.default/config.
+ *      - Add P2R and auto include config.default/config.
  *
  * V 0.02 / 2011-07-25 / 7374770e25
- * 		- Add hash in version history.
+ *      - Add hash in version history.
  *
  * V 0.01 / 2010-10-10 / 564ebdbb10
- * 		- New: Basic structure with PrintUsage() func.
+ *      - New: Basic structure with PrintUsage() func.
  */
 ?>
