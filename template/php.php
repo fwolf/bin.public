@@ -3,7 +3,7 @@
 /**
  * filename.php
  *
- * Copyright (c) 2013, Fwolf <fwolf.aide+bin.public@gmail.com>
+ * Copyright 2013 Fwolf <fwolf.aide+bin.public@gmail.com>
  * All rights reserved.
  *
  * Distributed under the GNU General Public License, version 3.0.
@@ -18,7 +18,7 @@
  * Other information like requirement, usage etc.
  *
  * @package     bin.public
- * @copyright   Copyright © 2013, Fwolf
+ * @copyright   Copyright 2013 Fwolf
  * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license     http://www.gnu.org/licenses/gpl.html GPL v3
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL v3
@@ -68,19 +68,21 @@ EOF;
 } // end of func PrintUsage
 
 
-/*
+/**
  * ChangeLog
  *
+ * Unversoned
+ *  - Change copyright and changelog style
+ *
  * V 0.04 / 2012-03-01 / 90598d3f73
- *      - Chg: Use __DIR__ instead of P2R constant.
+ *  - Chg: Use __DIR__ instead of P2R constant
  *
  * V 0.03 / 2011-08-21 / 38fdf8d44b
- *      - Add P2R and auto include config.default/config.
+ *  - Add P2R and auto include config.default/config
  *
  * V 0.02 / 2011-07-25 / 7374770e25
- *      - Add hash in version history.
+ *  - Add hash in version history
  *
  * V 0.01 / 2010-10-10 / 564ebdbb10
- *      - New: Basic structure with PrintUsage() func.
+ *  - New: Basic structure with PrintUsage() func
  */
-?>
