@@ -16,12 +16,12 @@
 
 # Print usage message
 function PrintUsage {
-    cat <<-EOF
-    Usage: `basename $0` [hash]
+    cat <<-"EOF"
+Usage: `basename $0` [hash]
 
-    Parameters:
-      hash          Sha1 hash of git, default HEAD.
-    EOF
+Parameters:
+  hash          Sha1 hash of git, default HEAD.
+EOF
 } # end of func PrintUsage
 
 
