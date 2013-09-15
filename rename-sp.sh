@@ -80,18 +80,20 @@ do
         F_EXT=.$F_EXT
     fi
 
-    # Replace splitter
-    F_NEW=$(echo $F_NEW | sed -r "s/($CHAR_TO_IN)+/$CHAR_IN/g")
-    F_NEW=$(echo $F_NEW | sed -r "s/($CHAR_TO_OUT)+/$CHAR_OUT/g")
+    # 1. Replace splitter
+    # 2. Remove head & tail special char
+    # 3. Merge splitter
+    F_NEW=$(echo $F_NEW | sed -r "\
+        s/($CHAR_TO_IN)+/$CHAR_IN/g;
+        s/($CHAR_TO_OUT)+/$CHAR_OUT/g;
 
-    # Remove head & tail special char
-    F_NEW=$(echo $F_NEW | sed -r "s/^($CHAR_TO_IN|$CHAR_TO_OUT|$CHAR_IN|$CHAR_OUT)+//g")
-    F_NEW=$(echo $F_NEW | sed -r "s/($CHAR_TO_IN|$CHAR_TO_OUT|$CHAR_IN|$CHAR_OUT)+$//g")
+        s/^($CHAR_TO_IN|$CHAR_TO_OUT|$CHAR_IN|$CHAR_OUT)+//g;
+        s/($CHAR_TO_IN|$CHAR_TO_OUT|$CHAR_IN|$CHAR_OUT)+$//g;
 
-    # Merge splitter
-    F_NEW=$(echo $F_NEW | sed -r "s/($CHAR_IN)+/$CHAR_IN/g")
-    F_NEW=$(echo $F_NEW | sed -r "s/(($CHAR_OUT)+($CHAR_IN)?)/$CHAR_OUT/g")
-    F_NEW=$(echo $F_NEW | sed -r "s/(($CHAR_IN)?($CHAR_OUT)+)/$CHAR_OUT/g")
+        s/($CHAR_IN)+/$CHAR_IN/g;
+        s/(($CHAR_OUT)+($CHAR_IN)?)/$CHAR_OUT/g;
+        s/(($CHAR_IN)?($CHAR_OUT)+)/$CHAR_OUT/g;
+    ")
 
     # Add file ext back
     F_NEW=$F_NEW$F_EXT
