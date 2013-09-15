@@ -48,14 +48,14 @@ source ${P2R}config.default.sh
 # Unversioned
 #   - Change copyright and changelog style
 #
-# V 0.04 / 2011-08-18 / 707fbe7615
+# v0.04 / 2011-08-18 / 707fbe7615
 #   - Add execute of config.default.sh
 #
-# V 0.03 / 2011-07-25 / 7374770e25
+# v0.03 / 2011-07-25 / 7374770e25
 #   - Add hash in version history
 #
-# V 0.02 / 2010-05-01 / 425f9743f7
+# v0.02 / 2010-05-01 / 425f9743f7
 #   - Chg header comment
 #
-# V 0.01 / 2009-03-28 / ce1ba81e69
+# v0.01 / 2009-03-28 / ce1ba81e69
 #====================================================================

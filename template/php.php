@@ -74,15 +74,15 @@ EOF;
  * Unversoned
  *  - Change copyright and changelog style
  *
- * V 0.04 / 2012-03-01 / 90598d3f73
+ * v0.04 / 2012-03-01 / 90598d3f73
  *  - Chg: Use __DIR__ instead of P2R constant
  *
- * V 0.03 / 2011-08-21 / 38fdf8d44b
+ * v0.03 / 2011-08-21 / 38fdf8d44b
  *  - Add P2R and auto include config.default/config
  *
- * V 0.02 / 2011-07-25 / 7374770e25
+ * v0.02 / 2011-07-25 / 7374770e25
  *  - Add hash in version history
  *
- * V 0.01 / 2010-10-10 / 564ebdbb10
+ * v0.01 / 2010-10-10 / 564ebdbb10
  *  - New: Basic structure with PrintUsage() func
  */
