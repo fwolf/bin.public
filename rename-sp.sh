@@ -50,20 +50,26 @@ CHAR_TO_OUT="\[|\]|\{|\}|\(|\)|\,|\"|\:|\&|\+|\_"
 NO_ACT=0
 
 
-# Scan parameters for option
+# Scan option
 I=0
-for O in "$@"
-do
-    if [[ "x$O" == "x-n" ]]; then
-        NO_ACT=1
-    elif [[ "x${O%/}" != "x$O" ]]; then
-        # Remove tailing '/' of directory
-        F_TODO[$I]="${O%/}"
-        I=$((I + 1))
-    else
-        F_TODO[$I]="$O"
-        I=$((I + 1))
-    fi
+while [[ $# -gt 0 ]]; do
+    opt="$1"
+    shift;
+    case "$opt" in
+        '-n')
+            NO_ACT=1
+            ;;
+        *)
+            if [[ "x${opt%/}" != "x$opt" ]]; then
+                # Remove tailing '/' of directory
+                F_TODO[$I]="${opt%/}"
+                I=$((I + 1))
+            else
+                F_TODO[$I]="$opt"
+                I=$((I + 1))
+            fi
+            ;;
+    esac
 done
 
 
