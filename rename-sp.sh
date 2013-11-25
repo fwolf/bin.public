@@ -44,7 +44,7 @@ CHAR_IN="\."
 CHAR_OUT="\-"
 
 # Define other special chars
-CHAR_TO_IN="\ |\'|\!"
+CHAR_TO_IN="\ |'|\!"
 CHAR_TO_OUT="\[|\]|\{|\}|\(|\)|\,|\"|\:|\&|\+|\_"
 
 NO_ACT=0
