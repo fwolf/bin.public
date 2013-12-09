@@ -76,14 +76,19 @@ done
 # Scan files to rename
 for F in "${F_TODO[@]}"
 do
-    F_NEW="${F%.*}"
-    F_EXT="${F##*.}"
-    if [[ "x$F_EXT" == "x$F_NEW" ]]; then
-        # No extension, maybe is a directory
+    if [[ -d $F ]]; then
+        F_NEW=$F
         F_EXT=""
     else
-        # Prepend ext with dot
-        F_EXT=.$F_EXT
+        F_NEW="${F%.*}"
+        F_EXT="${F##*.}"
+        if [[ "x$F_EXT" == "x$F_NEW" ]]; then
+            # No extension, maybe is a directory
+            F_EXT=""
+        else
+            # Prepend ext with dot
+            F_EXT=.$F_EXT
+        fi
     fi
 
     # 1. Replace splitter
