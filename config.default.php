@@ -96,15 +96,15 @@ $config['imap-del-for-mh.mail'] = array(
 
 // ======== Mail settings
 // Mail host
-$config['mail.server.gmail.imap.host'] = 'imap.gmail.com';
-$config['mail.server.gmail.imap.port'] = 993;
-$config['mail.server.gmail.pop3.host'] = 'pop.gmail.com';
-$config['mail.server.gmail.pop3.port'] = 995;
-$config['mail.server.gmail.smtp.host'] = 'ssl://smtp.gmail.com';
-$config['mail.server.gmail.smtp.port'] = 465;
+$config['mail.provider.gmail.imap.host'] = 'imap.gmail.com';
+$config['mail.provider.gmail.imap.port'] = 993;
+$config['mail.provider.gmail.pop3.host'] = 'pop.gmail.com';
+$config['mail.provider.gmail.pop3.port'] = 995;
+$config['mail.provider.gmail.smtp.host'] = 'ssl://smtp.gmail.com';
+$config['mail.provider.gmail.smtp.port'] = 465;
 // Mail account
 /*
-$config['mail.account.user@domain_tld.server'] = 'gmail';
+$config['mail.account.user@domain_tld.provider'] = 'gmail';
 $config['mail.account.user@domain_tld.name'] = 'user@domain.tld';
 $config['mail.account.user@domain_tld.user'] = 'user or user@domain.tld';
 $config['mail.account.user@domain_tld.pass'] = 'pass';

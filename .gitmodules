@@ -1,0 +1,3 @@
+[submodule "module/imap-del-for-mh.php"]
+	path = module/imap-del-for-mh.php
+	url = git@github.com:fwolf/imap-del-for-mh.php.git
