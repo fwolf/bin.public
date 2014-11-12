@@ -3,26 +3,26 @@
 /**
  * filename.php
  *
- * Copyright 2013 Fwolf <fwolf.aide+bin.public@gmail.com>
+ * Copyright 2014 Fwolf <fwolf.aide+bin.public@gmail.com>
  * All rights reserved.
  *
- * Distributed under the GNU General Public License, version 3.0.
+ * Distributed under the GNU General Public License v3.0 or later.
  * http://www.gnu.org/licenses/gpl.html
- * Distributed under the GNU Lesser General Public License, version 3.0.
+ * Distributed under the GNU Lesser General Public License v3.0 or later.
  * http://www.gnu.org/licenses/lgpl.html
  * Distributed under the MIT License.
- * http://opensource.org/licenses/mit-license
+ * http://opensource.org/licenses/MIT
  *
  * Description of this script.
  *
  * Other information like requirement, usage etc.
  *
  * @package     bin.public
- * @copyright   Copyright 2013 Fwolf
+ * @copyright   Copyright 2014 Fwolf
  * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
- * @license     http://www.gnu.org/licenses/gpl.html GPL v3
- * @license     http://www.gnu.org/licenses/lgpl.html LGPL v3
- * @license     http://opensource.org/licenses/mit-license MIT
+ * @license     http://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @license     http://www.gnu.org/licenses/lgpl.html LGPL-3.0+
+ * @license     http://opensource.org/licenses/MIT MIT
  * @since       2011-01-11
  */
 
