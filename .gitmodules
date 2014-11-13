@@ -1,6 +1,6 @@
 [submodule "module/imap-del-for-mh.php"]
 	path = module/imap-del-for-mh.php
-	url = git@github.com:fwolf/imap-del-for-mh.php.git
+	url = https://github.com/fwolf/imap-del-for-mh.php.git
 [submodule "module/remove-old-kernels.sh"]
 	path = module/remove-old-kernels.sh
-	url = git@github.com:fwolf/remove-old-kernels.sh.git
+	url = https://github.com/fwolf/remove-old-kernels.sh.git
