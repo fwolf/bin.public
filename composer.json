@@ -1,4 +1,13 @@
 {
+  "name": "fwolf/bin.public",
+  "description": "Cli tools",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Fwolf\\Bin\\ImapDeleteForMh\\": "module/imap-del-for-mh.php/ImapDeleteForMh/"
+    }
+  },
   "require": {
     "fwlib/fwlib": "dev-master"
   }
