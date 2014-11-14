@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "c2e9bd76e108c1969a5f95306f2c86e2",
+    "packages": [
+        {
+            "name": "fwlib/fwlib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fwolf/fwlib.git",
+                "reference": "75e3b32811046651ee771a1142ae6d86cce881aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fwolf/fwlib/zipball/75e3b32811046651ee771a1142ae6d86cce881aa",
+                "reference": "75e3b32811046651ee771a1142ae6d86cce881aa",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fwlib": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL V3"
+            ],
+            "authors": [
+                {
+                    "name": "Fwolf",
+                    "email": "fwolf.aide+Fwlib@gmail.com"
+                }
+            ],
+            "description": "Common PHP library",
+            "keywords": [
+                "fwlib",
+                "lib"
+            ],
+            "time": "2014-09-01 15:53:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "fwlib/fwlib": 20
+    },
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
+}

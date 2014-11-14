@@ -1,0 +1,5 @@
+{
+  "require": {
+    "fwlib/fwlib": "dev-master"
+  }
+}
