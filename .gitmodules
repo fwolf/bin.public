@@ -4,3 +4,6 @@
 [submodule "module/remove-old-kernels.sh"]
 	path = module/remove-old-kernels.sh
 	url = https://github.com/fwolf/remove-old-kernels.sh.git
+[submodule "module/git-id"]
+	path = module/git-id
+	url = https://github.com/fwolf/git-id.git
