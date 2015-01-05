@@ -1,1 +1,1 @@
-module/imap-del-for-mh.php/imap-del-for-mh.php
+modules/imap-del-for-mh.php/imap-del-for-mh.php

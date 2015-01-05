@@ -1,1 +1,1 @@
-module/remove-old-kernels.sh/remove-old-kernels.sh
+modules/remove-old-kernels.sh/remove-old-kernels.sh
