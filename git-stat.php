@@ -372,13 +372,15 @@ function MergeOther (&$ar_col, $i_other) {
 
     // Merge to col array
     $ar_col[$i_other] = array('Other', '=');
+    $i_sum_tidy = 0;
     $i_sum = 0;
     foreach ($ar_other as $author => $v) {
         if (isset($v['line'])) {
             PrintLine($ar_col[$i_other], $v);
             if (1 < GetCfg('git-stat.depth') && GetCfg('git-stat.spacer'))
                 $ar_col[$i_other][] = '';
-            $i_sum += $v['line-tidy'];
+            $i_sum_tidy += $v['line-tidy'];
+            $i_sum += $v['line'];
         }
         else {
             for ($i=1; $i<=GetCfg('git-stat.depth'); $i++)
@@ -391,6 +393,7 @@ function MergeOther (&$ar_col, $i_other) {
     array_pop($ar_col[$i_other]);
 
     $ar_col[$i_other][] = '-';
+    $ar_col[$i_other][] = $i_sum_tidy;
     $ar_col[$i_other][] = $i_sum;
 
     // Cut cols after other
@@ -627,14 +630,18 @@ function PrintResult2 ($ar_rs) {
     $i_col = 0;
     // Col 1, author
     $ar_col[$i_col][] = '-';
-    $ar_col[$i_col++][] = 'Total';
+    $ar_col[$i_col][] = 'Total';
+    $ar_col[$i_col][] = '';
     // Col 2, line
+    $i_col++;
     $ar_col[$i_col][] = '-';
-    $ar_col[$i_col++][] = $ar_sum['line-tidy'];
+    $ar_col[$i_col][] = $ar_sum['line-tidy'];
+    $ar_col[$i_col][] = $ar_sum['line'];
     foreach ($ar_ext as $s_ext => $i_cnt) {
+        $i_col++;
         $ar_col[$i_col][] = '-';
-        $ar_col[$i_col++][]
-            = $ar_sum['line-ext-' . $s_ext . '-tidy'];
+        $ar_col[$i_col][] = $ar_sum['line-ext-' . $s_ext . '-tidy'];
+        $ar_col[$i_col][] = $ar_sum['line-ext-' . $s_ext];
     }
 
 
