@@ -19,7 +19,7 @@
  *          seperate count for each file type, user and rank them.
  *
  * @package     bin.public
- * @copyright   Copyright © 2011-2014, Fwolf
+ * @copyright   Copyright 2011-2015 Fwolf
  * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL v3
  * @since       2011-08-21
@@ -84,8 +84,8 @@ function __Main () {
 
     $gitId = '';
     $gitId2 = '';
-    exec('./git-id', $gitId);
-    exec('./git-id2', $gitId2);
+    exec('git-id', $gitId);
+    exec('git-id2', $gitId2);
     $gitId = implode('', $gitId);
     $gitId2 = implode('', $gitId2);
     Ecl('Stat @ ' . date('Y-m-d H:i:s') . ' for: ');
