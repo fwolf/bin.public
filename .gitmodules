@@ -7,3 +7,6 @@
 [submodule "modules/git-id"]
 	path = modules/git-id
 	url = https://github.com/fwolf/git-id.git
+[submodule "modules/copyright-year-updater.sh"]
+	path = modules/copyright-year-updater.sh
+	url = https://github.com/fwolf/copyright-year-updater.sh.git
