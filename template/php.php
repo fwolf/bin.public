@@ -3,14 +3,14 @@
 /**
  * filename.php
  *
- * Copyright 2014 Fwolf <fwolf.aide+bin.public@gmail.com>
+ * Copyright 2017 Fwolf <fwolf.aide+bin.public@gmail.com>
  * All rights reserved.
  *
  * Distributed under the GNU General Public License v3.0 or later.
  * http://www.gnu.org/licenses/gpl.html
  * Distributed under the GNU Lesser General Public License v3.0 or later.
  * http://www.gnu.org/licenses/lgpl.html
- * Distributed under the MIT License.
+ * Distributed under the MIT license.
  * http://opensource.org/licenses/MIT
  *
  * Description of this script.
@@ -18,7 +18,7 @@
  * Other information like requirement, usage etc.
  *
  * @package     bin.public
- * @copyright   Copyright 2014 Fwolf
+ * @copyright   Copyright 2017 Fwolf
  * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license     http://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL-3.0+

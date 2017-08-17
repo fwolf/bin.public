@@ -2,14 +2,14 @@
 #====================================================================
 # filename.sh
 #
-# Copyright 2014 Fwolf <fwolf.aide+bin.public@gmail.com>
+# Copyright 2017 Fwolf <fwolf.aide+bin.public@gmail.com>
 # All rights reserved.
 #
 # Distributed under the GNU General Public License v3.0 or later.
 # http://www.gnu.org/licenses/gpl.html
 # Distributed under the GNU Lesser General Public License v3.0 or later.
 # http://www.gnu.org/licenses/lgpl.html
-# Distributed under the MIT License.
+# Distributed under the MIT license.
 # http://opensource.org/licenses/MIT
 #
 # Description of this script.
