@@ -2,6 +2,11 @@
 #====================================================================
 # filename.sh
 #
+# Description of this script.
+#
+# Other information like requirement, usage etc.
+#
+#
 # Copyright 2017 Fwolf <fwolf.aide+bin.public@gmail.com>
 # All rights reserved.
 #
@@ -11,10 +16,6 @@
 # http://www.gnu.org/licenses/lgpl.html
 # Distributed under the MIT license.
 # http://opensource.org/licenses/MIT
-#
-# Description of this script.
-#
-# Other information like requirement, usage etc.
 #====================================================================
 
 
