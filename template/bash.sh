@@ -11,11 +11,11 @@
 # All rights reserved.
 #
 # Distributed under the GNU General Public License v3.0 or later.
-# http://www.gnu.org/licenses/gpl.html
+# https://www.gnu.org/licenses/gpl.html
 # Distributed under the GNU Lesser General Public License v3.0 or later.
-# http://www.gnu.org/licenses/lgpl.html
+# https://www.gnu.org/licenses/lgpl.html
 # Distributed under the MIT license.
-# http://opensource.org/licenses/MIT
+# https://opensource.org/licenses/MIT
 #====================================================================
 
 
