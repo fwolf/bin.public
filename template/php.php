@@ -19,7 +19,7 @@
  * http://opensource.org/licenses/MIT
  *
  * @package     bin.public
- * @copyright   Copyright 2017 Fwolf
+ * @copyright   Copyright 2017 Fwolf <fwolf.aide+bin.public@gmail.com>
  * @author      Fwolf <fwolf.aide+bin.public@gmail.com>
  * @license     http://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @license     http://www.gnu.org/licenses/lgpl.html LGPL-3.0+
