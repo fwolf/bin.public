@@ -20,7 +20,7 @@
 
 
 # Print usage message
-function PrintUsage {
+function printUsage {
     cat <<-EOF
 Usage: `basename $0` P1 P2 [P3] [P4]
 
@@ -33,7 +33,7 @@ EOF
 
 # Check parameter amount
 if [[ $# -lt 2 ]]; then
-    PrintUsage
+    printUsage
     exit 1
 fi
 
@@ -46,7 +46,7 @@ source ${P2R}config.default.sh
 #====================================================================
 # ChangeLog
 #
-# Unversioned
+# Un-versioned
 #   - Change copyright and changelog style
 #
 # v0.04 / 2011-08-18 / 707fbe7615

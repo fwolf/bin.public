@@ -41,7 +41,7 @@ if (0 <= version_compare(phpversion(), '5.3.0')) {
 
 // Check parameter amount, at least 1 param needed
 if (2 > $argc) {
-    PrintUsage();
+    printUsage();
     exit(-1);
 }
 
@@ -53,10 +53,11 @@ if (2 > $argc) {
 
 // Functions define
 
-/*
+/**
  * Print usage message
  */
-function PrintUsage() {
+function printUsage()
+{
     $s = basename(__FILE__);
     echo <<<EOF
 Usage: $s P1 [P2] [P3] [P4]
@@ -66,13 +67,13 @@ Parameters:
   -P2           Note for P2.
 
 EOF;
-} // end of func PrintUsage
+}
 
 
 /**
  * ChangeLog
  *
- * Unversoned
+ * Un-versoned
  *  - Change copyright and changelog style
  *
  * v0.04 / 2012-03-01 / 90598d3f73
