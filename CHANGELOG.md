@@ -4,7 +4,7 @@
 
 ### Un-versioned
 
-- Upgrade module copyright-year-updater.sh to v0.2.4-0-g8701de9
+- Upgrade module copyright-year-updater.sh to v0.2.4-1-g5f65dfd
 
 
 ### v1.1 (2017-08-17)
