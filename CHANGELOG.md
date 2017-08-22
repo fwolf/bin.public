@@ -2,6 +2,11 @@
 
 
 
+### Un-versioned
+
+- Upgrade module copyright-year-updater.sh to v0.2.4-0-g8701de9
+
+
 ### v1.1 (2017-08-17)
 
 - Adjust bash and php template to nowday standard
