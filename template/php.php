@@ -15,7 +15,7 @@
  * https://www.gnu.org/licenses/gpl.html
  * Distributed under the GNU Lesser General Public License v3.0 or later.
  * https://www.gnu.org/licenses/lgpl.html
- * Distributed under the MIT license.
+ * Distributed under the MIT License.
  * https://opensource.org/licenses/MIT
  *
  * @package     bin.public
