@@ -19,6 +19,9 @@
 #====================================================================
 
 
+set -eu
+
+
 # Print usage message
 function printUsage {
     cat <<-EOF
